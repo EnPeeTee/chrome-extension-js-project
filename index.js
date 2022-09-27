@@ -1,13 +1,25 @@
 const btnInput = document.getElementById("btn-input")
 const elInput = document.getElementById("el-input")
+const elUl = document.getElementById("el-ul")
 
-let myLeads = ["www.awesomelead.com", "www.epiclead.com", "www.greatlead.com"]
+let myLeads = []
 
 btnInput.addEventListener("click", () => {
-    myLeads.push(elInput.value)
-    console.log(myLeads)
+    elInput.value !== `` ? myLeads.push(elInput.value) : ``;
+    elInput.value = ``;
+    renderLeads();
 })
 
-for ( i = 0 ; i < myLeads.length ; i++ ) {
-    console.log(myLeads[i])
+function renderLeads() {
+    let listItems = "";
+    for ( let i = 0 ; i < myLeads.length ; i++ ) {
+    listItems += `
+        <li> 
+            <a target="_blank" href="http://${myLeads[i]}"> 
+                ${myLeads[i]} 
+            </a>
+        </li>
+    `;
+    }
+    elUl.innerHTML = listItems;
 }
